@@ -1,1 +1,1494 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>K’ak’ – Rituales de Cacao Volcánico</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portafolio de K’ak’, una experiencia de cata de chocolate caliente basada en tres fórmulas inspiradas en los volcanes y sabores de Guatemala." />
 
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --color-bg: #1f1510;
+      --color-bg-alt: #f2dfb5;
+      --color-chocolate: #3b281c;
+      --color-terracotta: #b46332;
+      --color-gold: #d2b46b;
+      --color-cream: #f8efe0;
+      --color-text: #f9f5ee;
+      --color-muted: #b79b75;
+      --max-width: 1120px;
+      --radius-card: 18px;
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.38);
+      --transition-fast: 0.25s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Nunito", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img,
+    video {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ---------- LAYOUT ---------- */
+
+    .page {
+      min-height: 100vh;
+      background: radial-gradient(circle at top, #5e3a25 0, #120c08 55%, #0c0705 100%);
+      color: var(--color-text);
+    }
+
+    .container {
+      width: 90%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    section {
+      padding: 6rem 0 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    section:nth-of-type(even) {
+      background: linear-gradient(to bottom, #150f0a 0, #24160c 45%, #150f0a 100%);
+    }
+
+    .section-heading {
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 0.85rem;
+      color: var(--color-muted);
+      margin-bottom: 0.7rem;
+    }
+
+    .section-title {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      margin-bottom: 1.5rem;
+    }
+
+    .section-lead {
+      max-width: 650px;
+      font-size: 0.98rem;
+      color: #e3d8c6;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ---------- NAV ---------- */
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      padding: 1.1rem 4vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background var(--transition-fast), box-shadow var(--transition-fast), padding var(--transition-fast);
+      mix-blend-mode: normal;
+    }
+
+    .nav--scrolled {
+      background: rgba(10, 6, 4, 0.95);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+      padding: 0.6rem 4vw;
+      backdrop-filter: blur(18px);
+    }
+
+    .nav-logo {
+      font-family: "Playfair Display", serif;
+      font-size: 1.35rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .nav-logo-mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1px solid rgba(222, 192, 120, 0.8);
+      display: grid;
+      place-items: center;
+      font-size: 0.75rem;
+      color: var(--color-gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .nav-link {
+      position: relative;
+      padding-bottom: 0.15rem;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 1px;
+      width: 0;
+      background: linear-gradient(90deg, var(--color-terracotta), var(--color-gold));
+      transition: width var(--transition-fast);
+    }
+
+    .nav-link:hover::after,
+    .nav-link--active::after {
+      width: 100%;
+    }
+
+    .nav-toggle {
+      display: none;
+      border: 1px solid rgba(248, 238, 216, 0.35);
+      border-radius: 999px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      background: rgba(17, 10, 7, 0.7);
+    }
+
+    /* ---------- HERO ---------- */
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(1.1) contrast(1.05) brightness(0.75);
+      transform: scale(1.02);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 15% 0%, rgba(230, 196, 130, 0.25) 0, transparent 50%),
+        radial-gradient(circle at 80% 120%, rgba(230, 117, 41, 0.45) 0, transparent 60%),
+        linear-gradient(to bottom, rgba(10, 6, 4, 0.75) 0, rgba(8, 5, 3, 0.92) 50%, #080403 100%);
+      mix-blend-mode: multiply;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      width: 90%;
+      max-width: var(--max-width);
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 3.5rem;
+      align-items: center;
+      padding-top: 4.5rem;
+      padding-bottom: 3.5rem;
+    }
+
+    .hero-tagline {
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      color: var(--color-muted);
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-title {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2.7rem, 5vw, 3.7rem);
+      line-height: 1.05;
+      margin-bottom: 0.7rem;
+    }
+
+    .hero-title span {
+      display: block;
+      font-size: 0.58em;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-top: 0.8rem;
+    }
+
+    .hero-text {
+      max-width: 460px;
+      font-size: 0.98rem;
+      color: #efe4d3;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 0.75rem 1.65rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at 0% 0%, #f2d9a1 0, #d2a150 36%, #a3501e 100%);
+      color: #201208;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7);
+    }
+
+    .btn-ghost {
+      background: rgba(10, 6, 4, 0.35);
+      color: var(--color-cream);
+      border-color: rgba(235, 209, 162, 0.45);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15, 9, 6, 0.85);
+    }
+
+    .hero-meta {
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .hero-meta-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 999px;
+      background: var(--color-terracotta);
+    }
+
+    .hero-object {
+      justify-self: end;
+      max-width: 360px;
+      background: radial-gradient(circle at 0 0, rgba(239, 205, 147, 0.06) 0, transparent 55%);
+    }
+
+    .hero-object-inner {
+      border-radius: 28px;
+      padding: 1.2rem;
+      background: radial-gradient(circle at 10% 0, rgba(235, 200, 133, 0.08) 0, transparent 60%), #140d08;
+      border: 1px solid rgba(212, 176, 119, 0.4);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(18px);
+    }
+
+    .hero-object img {
+      border-radius: 22px;
+      border: 1px solid rgba(236, 214, 165, 0.45);
+      margin-bottom: 1rem;
+    }
+
+    .hero-object-caption {
+      font-size: 0.8rem;
+      color: var(--color-cream);
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-object-pill {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--color-muted);
+    }
+
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 1.8rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hero-scroll-icon {
+      width: 18px;
+      height: 30px;
+      border-radius: 999px;
+      border: 1px solid rgba(227, 202, 155, 0.7);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-scroll-icon::after {
+      content: "";
+      position: absolute;
+      top: 5px;
+      left: 50%;
+      width: 3px;
+      height: 7px;
+      border-radius: 99px;
+      background: var(--color-gold);
+      transform: translateX(-50%);
+      animation: scrollDot 1.8s infinite;
+    }
+
+    @keyframes scrollDot {
+      0% { opacity: 0; transform: translate(-50%, -20%); }
+      30% { opacity: 1; }
+      100% { opacity: 0; transform: translate(-50%, 90%); }
+    }
+
+    /* ---------- PRODUCTO ---------- */
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 0.5rem 0.95rem;
+      border-radius: 999px;
+      border: 1px solid rgba(228, 202, 155, 0.4);
+      background: rgba(15, 9, 6, 0.7);
+      color: var(--color-muted);
+      margin-bottom: 1.2rem;
+    }
+
+    .pill-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0%, #ffefc1 0, #d07c32 57%, #6d2b10 100%);
+    }
+
+    .product-text {
+      color: #f0e5d5;
+      font-size: 0.97rem;
+      max-width: 540px;
+    }
+
+    .product-text strong {
+      color: var(--color-gold);
+      font-weight: 600;
+    }
+
+    .product-details {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.3rem;
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      color: #ddcab0;
+    }
+
+    .detail-label {
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      color: var(--color-muted);
+      margin-bottom: 0.3rem;
+    }
+
+    .product-visual {
+      justify-self: end;
+      max-width: 360px;
+    }
+
+    .product-visual-inner {
+      border-radius: 26px;
+      padding: 1rem;
+      background: radial-gradient(circle at 0 0, rgba(247, 223, 163, 0.07) 0, transparent 60%), #1a110b;
+      border: 1px solid rgba(208, 175, 115, 0.6);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .product-visual img {
+      border-radius: 22px;
+      border: 1px solid rgba(236, 214, 165, 0.45);
+    }
+
+    .note {
+      margin-top: 0.7rem;
+      font-size: 0.75rem;
+      color: var(--color-muted);
+    }
+
+    /* ---------- FORMULAS ---------- */
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.7rem;
+    }
+
+    .card {
+      border-radius: var(--radius-card);
+      padding: 1.6rem 1.6rem 1.7rem;
+      background: radial-gradient(circle at 0 0, rgba(246, 220, 163, 0.12) 0, transparent 55%), #1a100b;
+      border: 1px solid rgba(221, 191, 135, 0.55);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.6);
+      position: relative;
+      overflow: hidden;
+      transform-origin: center bottom;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 0 0, rgba(240, 190, 120, 0.16) 0, transparent 55%);
+      opacity: 0;
+      transition: opacity var(--transition-fast);
+      pointer-events: none;
+    }
+
+    .card:hover {
+      transform: translateY(-6px) rotateX(1deg);
+      box-shadow: 0 24px 46px rgba(0, 0, 0, 0.7);
+      border-color: rgba(233, 202, 150, 0.9);
+    }
+
+    .card:hover::after {
+      opacity: 1;
+    }
+
+    .card-badge {
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #f2e4cc;
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: rgba(32, 18, 10, 0.9);
+      border: 1px solid rgba(235, 200, 138, 0.7);
+      margin-bottom: 1.1rem;
+    }
+
+    .badge-chip {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #ffefc3, #d18b39, #7c2b10);
+    }
+
+    .card-name {
+      font-family: "Playfair Display", serif;
+      font-size: 1.4rem;
+      margin-bottom: 0.1rem;
+    }
+
+    .card-subtitle {
+      font-size: 0.83rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      margin-bottom: 0.9rem;
+    }
+
+    .card-text {
+      font-size: 0.9rem;
+      color: #f4e6d2;
+      margin-bottom: 1.1rem;
+    }
+
+    .card-list {
+      list-style: none;
+      font-size: 0.78rem;
+      color: #e4d4bd;
+    }
+
+    .card-list li + li {
+      margin-top: 0.4rem;
+    }
+
+    .card-list strong {
+      font-weight: 600;
+      color: var(--color-gold);
+    }
+
+    .card-footnote {
+      margin-top: 1.1rem;
+      font-size: 0.72rem;
+      color: var(--color-muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* ---------- ORIGEN ---------- */
+
+    .origin-section {
+      background:
+        radial-gradient(circle at 10% 0%, rgba(223, 184, 121, 0.15) 0, transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(186, 92, 41, 0.28) 0, transparent 55%),
+        #120b06;
+    }
+
+    .origin-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2.8rem;
+      align-items: center;
+    }
+
+    .origin-pill {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+      color: var(--color-muted);
+    }
+
+    .origin-pill span {
+      padding: 0.4rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(234, 206, 162, 0.45);
+      background: rgba(12, 7, 5, 0.85);
+    }
+
+    .origin-text {
+      font-size: 0.95rem;
+      color: #f5e8d7;
+      max-width: 560px;
+    }
+
+    .origin-columns {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.7rem;
+      margin-top: 2rem;
+      font-size: 0.83rem;
+      color: #e7d4bb;
+    }
+
+    .origin-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .origin-panel {
+      justify-self: end;
+      max-width: 320px;
+      border-radius: 24px;
+      padding: 1.2rem 1.3rem;
+      background: radial-gradient(circle at 0 0, rgba(243, 209, 151, 0.1) 0, transparent 55%), #1a0f09;
+      border: 1px solid rgba(223, 193, 139, 0.65);
+      box-shadow: var(--shadow-soft);
+      font-size: 0.8rem;
+      color: #f1e4d2;
+    }
+
+    .origin-panel-title {
+      font-family: "Playfair Display", serif;
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.6rem;
+    }
+
+    .chip {
+      border-radius: 999px;
+      padding: 0.25rem 0.7rem;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid rgba(233, 207, 164, 0.6);
+      background: rgba(14, 8, 5, 0.9);
+      color: var(--color-cream);
+    }
+
+    /* ---------- RITUAL ---------- */
+
+    .ritual-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .timeline {
+      list-style: none;
+      border-left: 1px solid rgba(225, 197, 148, 0.45);
+      padding-left: 1.6rem;
+      margin-top: 0.5rem;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-bottom: 1.3rem;
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -1.9rem;
+      top: 0.15rem;
+      width: 11px;
+      height: 11px;
+      border-radius: 999px;
+      border: 2px solid #140b06;
+      background: radial-gradient(circle at 30% 0%, #ffecc0 0, #d89443 60%, #7b3214 100%);
+      box-shadow: 0 0 0 5px rgba(208, 161, 98, 0.2);
+    }
+
+    .timeline-step {
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline-title {
+      font-size: 0.98rem;
+      font-weight: 600;
+      margin-bottom: 0.15rem;
+    }
+
+    .timeline-text {
+      font-size: 0.9rem;
+      color: #f2e5d6;
+    }
+
+    .ritual-card {
+      justify-self: end;
+      max-width: 330px;
+      border-radius: 24px;
+      padding: 1.2rem 1.4rem;
+      background: radial-gradient(circle at 0 0, rgba(244, 212, 157, 0.14) 0, transparent 55%), #1a120b;
+      border: 1px solid rgba(223, 195, 140, 0.7);
+      box-shadow: var(--shadow-soft);
+      font-size: 0.8rem;
+      color: #f1e7d7;
+    }
+
+    .ritual-card h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 1.1rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .ritual-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 0.8rem;
+      font-size: 0.75rem;
+      color: #f4e7d5;
+    }
+
+    .ritual-stat-label {
+      display: block;
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      margin-bottom: 0.1rem;
+    }
+
+    /* ---------- PROYECTO ---------- */
+
+    .project-section {
+      background: radial-gradient(circle at 30% 0%, rgba(243, 207, 151, 0.1) 0, transparent 55%), #130d08;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 2.8rem;
+      align-items: start;
+    }
+
+    .project-text {
+      font-size: 0.95rem;
+      color: #f3e6d6;
+      max-width: 620px;
+    }
+
+    .project-list {
+      list-style: none;
+      margin-top: 1.6rem;
+      font-size: 0.9rem;
+      color: #f0e2cf;
+    }
+
+    .project-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-list-bullet {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      margin-top: 0.3rem;
+      background: linear-gradient(135deg, #ffeec2, #d68e3e, #7f3214);
+    }
+
+    .project-panel {
+      justify-self: end;
+      max-width: 340px;
+      border-radius: 24px;
+      padding: 1.4rem 1.5rem;
+      background: radial-gradient(circle at 0 0, rgba(246, 216, 164, 0.14) 0, transparent 55%), #1a100b;
+      border: 1px solid rgba(225, 196, 144, 0.8);
+      box-shadow: var(--shadow-soft);
+      font-size: 0.8rem;
+      color: #f7ebdb;
+    }
+
+    .project-panel-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .project-panel-title {
+      font-family: "Playfair Display", serif;
+      font-size: 1.15rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .badge-inline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(230, 203, 159, 0.7);
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-cream);
+      background: rgba(19, 11, 7, 0.9);
+      margin-top: 0.6rem;
+    }
+
+    /* ---------- CONTACTO / FOOTER ---------- */
+
+    .contact-section {
+      padding-bottom: 3rem;
+      background: #0e0906;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 2.6rem;
+      align-items: flex-start;
+    }
+
+    .contact-list {
+      list-style: none;
+      font-size: 0.88rem;
+      color: #f1e4d4;
+    }
+
+    .contact-list li + li {
+      margin-top: 0.7rem;
+    }
+
+    .contact-label {
+      font-size: 0.74rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      margin-bottom: 0.18rem;
+    }
+
+    .contact-email a {
+      text-decoration: underline;
+      text-decoration-color: rgba(223, 193, 140, 0.7);
+      text-underline-offset: 0.18em;
+    }
+
+    .footer {
+      border-top: 1px solid rgba(99, 73, 49, 0.9);
+      margin-top: 2.3rem;
+      padding-top: 1.4rem;
+      font-size: 0.72rem;
+      color: var(--color-muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    /* ---------- REVEAL ANIMATION ---------- */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+
+    @media (max-width: 960px) {
+      .hero-inner,
+      .grid-2,
+      .origin-grid,
+      .ritual-grid,
+      .project-grid,
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-inner {
+        padding-top: 5.4rem;
+      }
+
+      .hero-object,
+      .product-visual,
+      .origin-panel,
+      .ritual-card,
+      .project-panel {
+        justify-self: start;
+        max-width: 100%;
+      }
+
+      .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .nav-links {
+        position: fixed;
+        inset: 56px 1.5rem auto 1.5rem;
+        flex-direction: column;
+        gap: 0.9rem;
+        padding: 1rem 1.2rem 1.2rem;
+        border-radius: 18px;
+        background: rgba(9, 4, 2, 0.97);
+        border: 1px solid rgba(196, 162, 116, 0.7);
+        transform-origin: top;
+        transform: scaleY(0.9);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity var(--transition-fast), transform var(--transition-fast);
+      }
+
+      .nav-links--open {
+        opacity: 1;
+        pointer-events: auto;
+        transform: scaleY(1);
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+      }
+    }
+
+    @media (max-width: 720px) {
+      section {
+        padding: 4.8rem 0 4.2rem;
+      }
+
+      .hero-inner {
+        gap: 2.4rem;
+      }
+
+      .cards {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .product-details,
+      .origin-columns {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- NAV -->
+    <header>
+      <nav class="nav">
+        <div class="nav-logo">
+          <span class="nav-logo-mark">☕</span>
+          <span>K’ak’</span>
+        </div>
+        <button class="nav-toggle" type="button" id="navToggle">MENÚ</button>
+        <div class="nav-links" id="navLinks">
+          <a href="#producto" class="nav-link">Producto</a>
+          <a href="#formulas" class="nav-link">Fórmulas</a>
+          <a href="#origen" class="nav-link">Origen</a>
+          <a href="#ritual" class="nav-link">Ritual de cata</a>
+          <a href="#proyecto" class="nav-link">Proyecto</a>
+          <a href="#contacto" class="nav-link">Contacto</a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <main>
+      <section class="hero" id="inicio">
+        <!-- IMPORTANTE: renombra tu video de volcán a "volcan.mp4" y colócalo en la misma carpeta que este index.html -->
+        <video class="hero-video" autoplay muted loop playsinline>
+          <source src="volcan.mp4" type="video/mp4" />
+        </video>
+        <div class="hero-overlay"></div>
+
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <p class="hero-tagline">Chocolate fino & tradición guatemalteca</p>
+            <h1 class="hero-title">
+              K’ak’
+              <span>Rituales de cacao volcánico</span>
+            </h1>
+            <p class="hero-text">
+              Un set de chocolate para beber que transforma tres volcanes de Guatemala en tres
+              tazas. Fuego, agua y montaña se encuentran en una experiencia diseñada para la
+              cata sensorial contemporánea.
+            </p>
+
+            <div class="hero-cta">
+              <a href="#formulas" class="btn btn-primary">
+                Explorar las tres fórmulas
+              </a>
+              <a href="#proyecto" class="btn btn-ghost">
+                Ver proyecto de cata
+              </a>
+            </div>
+
+            <div class="hero-meta">
+              <span><span class="hero-meta-dot"></span> Cacao de origen Guatemala</span>
+              <span><span class="hero-meta-dot"></span> Diseño para curso internacional de degustación</span>
+            </div>
+          </div>
+
+          <aside class="hero-object">
+            <div class="hero-object-inner">
+              <!-- IMPORTANTE: reemplaza "kak-packaging.jpg" por el archivo de la foto de tu prototipo -->
+              <img src="kak-packaging.jpg" alt="Prototipo del set de chocolate K’ak’ con tres tabletas y taza de terracota" />
+              <p class="hero-object-caption">
+                Tres triángulos de chocolate inspiran tres momentos de degustación: K’AK’, HA’ y WITZ’.
+              </p>
+              <p class="hero-object-pill">
+                70% cacao · especias mesoamericanas · maíz tostado
+              </p>
+            </div>
+          </aside>
+        </div>
+
+        <div class="hero-scroll-hint">
+          <div class="hero-scroll-icon"></div>
+          <span>Desplázate</span>
+        </div>
+      </section>
+
+      <!-- PRODUCTO -->
+      <section id="producto">
+        <div class="container grid-2 reveal">
+          <div>
+            <div class="pill">
+              <span class="pill-dot"></span>
+              <span>Set degustación para chocolate caliente</span>
+            </div>
+            <p class="section-heading">El concepto</p>
+            <h2 class="section-title">Un volcán servido en taza</h2>
+            <p class="product-text">
+              <strong>K’ak’</strong> es un pequeño altar comestible. Cada pieza está pensada para
+              disolverse lentamente en leche o agua caliente y revelar capas de aromas:
+              chile, cardamomo, té negro, manzanilla, maíz tostado y cacao de origen
+              volcánico.
+              <br /><br />
+              En lugar de una presentación clásica en diapositivas, este sitio se convierte
+              en el escenario del set: un portafolio vivo para compartir la historia, el
+              diseño y la experiencia sensorial durante un curso internacional de cata de
+              chocolate.
+            </p>
+
+            <div class="product-details">
+              <div>
+                <p class="detail-label">Formato</p>
+                <p>Caja rígida con tres tabletas triangulares y una taza de terracota para el ritual de bebida.</p>
+              </div>
+              <div>
+                <p class="detail-label">Narrativa</p>
+                <p>Cada fórmula representa un elemento maya: fuego (<strong>K’AK’</strong>), agua (<strong>HA’</strong>) y montaña (<strong>WITZ’</strong>).</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-visual">
+            <div class="product-visual-inner">
+              <!-- Puedes cambiar esta imagen por un close-up del prototipo o del detalle gráfico -->
+              <img src="kak-packaging-detail.jpg" alt="Detalle gráfico del empaque de K’ak’" />
+              <p class="note">
+                Nota: reemplaza las imágenes “kak-packaging.jpg” y
+                “kak-packaging-detail.jpg” por tus fotografías reales manteniendo los mismos nombres de archivo.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FÓRMULAS -->
+      <section id="formulas">
+        <div class="container reveal">
+          <p class="section-heading">Las tres fórmulas</p>
+          <h2 class="section-title">Tres lecturas del mismo cacao</h2>
+          <p class="section-lead">
+            Las notas manuscritas originales en italiano describen texturas, colores y beneficios.
+            Aquí se condensan en tres recetas claras y sencillas pensadas para una cata guiada.
+          </p>
+
+          <div class="cards">
+            <!-- K’AK’ -->
+            <article class="card">
+              <div class="card-badge">
+                <span class="badge-chip"></span>
+                Fuego · 70% cacao
+              </div>
+              <h3 class="card-name">K’AK’</h3>
+              <p class="card-subtitle">Calor, especias, terracota</p>
+              <p class="card-text">
+                Inspirado en el rojo de la terracota y en el achiote, este chocolate para
+                beber abraza el picor suave y la calidez aromática del cardamomo de Alta Verapaz.
+              </p>
+              <ul class="card-list">
+                <li><strong>Base:</strong> chocolate oscuro 70% cacao de origen volcánico.</li>
+                <li><strong>Especias:</strong> achiote (Bixa orellana), chile cubanero, canela y cardamomo.</li>
+                <li><strong>Perfil:</strong> dulce-terroso, ligeramente ahumado, con un final cálido y prolongado.</li>
+              </ul>
+              <p class="card-footnote">Pensado para el primer sorbo de la sesión de cata.</p>
+            </article>
+
+            <!-- HA’ -->
+            <article class="card">
+              <div class="card-badge">
+                <span class="badge-chip"></span>
+                Agua · 60% cacao
+              </div>
+              <h3 class="card-name">HA’</h3>
+              <p class="card-subtitle">Infusión, té negro, manzanilla</p>
+              <p class="card-text">
+                La paleta recuerda la bandera de Guatemala y el agua del volcán. Al fundirse,
+                la ganache se mezcla con té negro e introduce notas florales y cítricas.
+              </p>
+              <ul class="card-list">
+                <li><strong>Base:</strong> chocolate con leche 60% cacao.</li>
+                <li><strong>Infusión:</strong> té negro, manzanilla y un toque de limón.</li>
+                <li><strong>Perfil:</strong> cremoso, envolvente, con frescura herbal y sensación de ligereza.</li>
+              </ul>
+              <p class="card-footnote">Ideal para el centro de la cata, cuando el paladar se abre.</p>
+            </article>
+
+            <!-- WITZ’ -->
+            <article class="card">
+              <div class="card-badge">
+                <span class="badge-chip"></span>
+                Montaña · 70% cacao
+              </div>
+              <h3 class="card-name">WITZ’</h3>
+              <p class="card-subtitle">Acatenango, maíz tostado</p>
+              <p class="card-text">
+                Una trufa de cacao oscuro inspirada en el volcán Acatenango. La superficie
+                se cubre con un velo de maíz anaranjado tostado que hace eco de las laderas volcánicas.
+              </p>
+              <ul class="card-list">
+                <li><strong>Base:</strong> trufa 70% cacao, moldeada para beber o morder.</li>
+                <li><strong>Capa exterior:</strong> cacao en polvo y harina muy fina de maíz tostado.</li>
+                <li><strong>Perfil:</strong> intenso, seco y crujiente, con notas a cereal tostado y brasa.</li>
+              </ul>
+              <p class="card-footnote">Cierra la experiencia con profundidad y textura.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ORIGEN -->
+      <section id="origen" class="origin-section">
+        <div class="container origin-grid reveal">
+          <div>
+            <p class="section-heading">Origen & territorio</p>
+            <h2 class="section-title">Cacao de volcanes y maíz</h2>
+            <div class="origin-pill">
+              <span>Guatemala · Mesoamérica</span>
+              <span>Cacao · Achiote · Maíz · Cardamomo</span>
+            </div>
+            <p class="origin-text">
+              El set K’ak’ se inspira en una Guatemala volcánica: laderas cubiertas de
+              cafetales y cacaotales, campos de maíz y mercados donde el achiote tiñe
+              de rojo las ollas de barro.
+              <br /><br />
+              El cardamomo, cultivado principalmente en Alta Verapaz desde hace más de
+              un siglo, se cruza aquí con el cacao para crear una taza que es al mismo
+              tiempo ritual, recuerdo y geografía líquida.
+            </p>
+
+            <div class="origin-columns">
+              <div>
+                <p class="origin-label">Materia prima</p>
+                <p>
+                  Cacao de fincas de altura, maíz criollo tostado, achiote, té negro,
+                  manzanilla y cítricos. Cada ingrediente está seleccionado para
+                  construir capas de aroma fácilmente identificables en cata.
+                </p>
+              </div>
+              <div>
+                <p class="origin-label">Narrativa sensorial</p>
+                <p>
+                  Del rojo terracota de la taza a los tonos dorados del maíz, la paleta
+                  de color se traslada directamente al diseño gráfico del empaque y al
+                  lenguaje visual de esta web.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <aside class="origin-panel">
+            <p class="origin-panel-title">Mapa de la degustación</p>
+            <p>
+              En cata, las tres fórmulas se leen como un viaje ascendente:
+            </p>
+            <ul class="card-list" style="margin-top:0.8rem;">
+              <li><strong>1 · K’AK’:</strong> entrada especiada y cálida.</li>
+              <li><strong>2 · HA’:</strong> centro fluido, herbal y cítrico.</li>
+              <li><strong>3 · WITZ’:</strong> cierre tostado, casi mineral.</li>
+            </ul>
+            <div class="chips">
+              <span class="chip">Volcán</span>
+              <span class="chip">Agua</span>
+              <span class="chip">Montaña</span>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- RITUAL DE CATA -->
+      <section id="ritual">
+        <div class="container ritual-grid reveal">
+          <div>
+            <p class="section-heading">Ritual de servicio</p>
+            <h2 class="section-title">Cómo presentar K’ak’ en la cata</h2>
+            <p class="section-lead">
+              Este set está pensado para acompañar una sesión guiada. La preparación del
+              chocolate se convierte en parte de la narrativa: el sonido de la leche
+              caliente, el brillo de la terracota, el vapor que asciende como volcán.
+            </p>
+
+            <ol class="timeline">
+              <li class="timeline-item">
+                <span class="timeline-dot"></span>
+                <p class="timeline-step">Paso 1 · Encender el volcán</p>
+                <p class="timeline-title">Presentar la caja cerrada</p>
+                <p class="timeline-text">
+                  Mostrar el empaque completo, invitar a leer los nombres K’AK’, HA’ y
+                  WITZ’ y asociarlos con los elementos fuego, agua y montaña.
+                </p>
+              </li>
+              <li class="timeline-item">
+                <span class="timeline-dot"></span>
+                <p class="timeline-step">Paso 2 · Derretir la historia</p>
+                <p class="timeline-title">Fundir cada triángulo</p>
+                <p class="timeline-text">
+                  Servir leche o agua caliente en la taza de terracota, añadir una
+                  fórmula a la vez y mezclar lentamente, invitando a oler antes de probar.
+                </p>
+              </li>
+              <li class="timeline-item">
+                <span class="timeline-dot"></span>
+                <p class="timeline-step">Paso 3 · Escuchar al paladar</p>
+                <p class="timeline-title">Guiar la cata</p>
+                <p class="timeline-text">
+                  Pedir a las personas que identifiquen primero textura, luego aromas
+                  dominantes y, por último, sensaciones en el cuerpo: calor, ligereza,
+                  profundidad. Comparar percepciones entre los tres volcanes.
+                </p>
+              </li>
+            </ol>
+          </div>
+
+          <aside class="ritual-card">
+            <h3>Parámetros sugeridos</h3>
+            <p>
+              Para facilitar la repetición del ritual durante el curso y en otros
+              contextos, se ofrecen proporciones orientativas:
+            </p>
+            <div class="ritual-stats">
+              <div>
+                <span class="ritual-stat-label">Cantidad por taza</span>
+                1 triángulo (≈ 18–20 g) por 120 ml de líquido.
+              </div>
+              <div>
+                <span class="ritual-stat-label">Temperatura</span>
+                65–70&nbsp;°C para resaltar aromas sin quemar el cacao.
+              </div>
+              <div>
+                <span class="ritual-stat-label">Orden de cata</span>
+                K’AK’ → HA’ → WITZ’.
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- PROYECTO -->
+      <section id="proyecto" class="project-section">
+        <div class="container project-grid reveal">
+          <div>
+            <p class="section-heading">Portafolio</p>
+            <h2 class="section-title">Una web en lugar de diapositivas</h2>
+            <p class="project-text">
+              Este sitio funciona como presentación viva para un curso internacional de
+              degustación de chocolate. En vez de pasar diapositivas, la audiencia navega
+              por una experiencia pensada como portafolio: producto, contexto, recetas y
+              ritual se integran en una sola narrativa visual.
+            </p>
+            <ul class="project-list">
+              <li>
+                <span class="project-list-bullet"></span>
+                <span><strong>Diseño minimalista:</strong> inspirado en portales de fincas de café y cacao de especialidad, con énfasis en fotografía, tipografía y espacio en blanco.</span>
+              </li>
+              <li>
+                <span class="project-list-bullet"></span>
+                <span><strong>Interactividad discreta:</strong> animaciones suaves al hacer scroll y tarjetas que reaccionan al cursor para mantener la atención sin distraer de la cata.</span>
+              </li>
+              <li>
+                <span class="project-list-bullet"></span>
+                <span><strong>Color de producto:</strong> la paleta se basa en el empaque físico: marrón cacao, dorado suave, crema y terracota.</span>
+              </li>
+            </ul>
+          </div>
+
+          <aside class="project-panel">
+            <p class="project-panel-label">Ficha del proyecto</p>
+            <p class="project-panel-title">K’ak’ · Rituales de cacao volcánico</p>
+            <p><strong>Autoría:</strong> Desarrollo de producto, narrativa sensorial y presentación web para curso de cata de chocolate.</p>
+            <p style="margin-top:0.7rem;">
+              <strong>Formato:</strong> sitio de una sola página (GitHub Pages) utilizando HTML, CSS y JavaScript puro.
+            </p>
+            <span class="badge-inline">
+              <span class="badge-chip" style="width:8px;height:8px;"></span>
+              Portafolio interactivo
+            </span>
+          </aside>
+        </div>
+      </section>
+
+      <!-- CONTACTO -->
+      <section id="contacto" class="contact-section">
+        <div class="container contact-grid reveal">
+          <div>
+            <p class="section-heading">Contacto</p>
+            <h2 class="section-title">Conversemos después de la cata</h2>
+            <p class="section-lead">
+              Esta web queda como registro del proyecto y punto de partida para futuras
+              colaboraciones en cacao de origen, diseño de experiencia y educación sensorial.
+            </p>
+            <ul class="contact-list">
+              <li>
+                <p class="contact-label">Responsable del proyecto</p>
+                <p><strong>[Tu nombre]</strong> · Investigación y desarrollo de cacao · Guatemala / Costa Rica</p>
+              </li>
+              <li class="contact-email">
+                <p class="contact-label">Correo electrónico</p>
+                <p><a href="mailto:tucorreo@ejemplo.com">tucorreo@ejemplo.com</a></p>
+              </li>
+              <li>
+                <p class="contact-label">Líneas de interés</p>
+                <p>Indicaciones geográficas, cacao mesoamericano, maridajes con infusiones y diseño de experiencias de cata.</p>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <p class="contact-label">Notas finales</p>
+            <p style="font-size:0.86rem;color:#f2e4d3;">
+              Puedes adaptar los textos de cada sección según evolucione el prototipo o se
+              definan nuevos orígenes de cacao. Este archivo único <code>index.html</code>
+              está listo para ser publicado en GitHub Pages.
+            </p>
+
+            <div class="footer">
+              <span>© <span id="yearSpan"></span> K’ak’ · Chocolate fino & tradición guatemalteca</span>
+              <span>Hecho para un curso internacional de degustación de chocolate</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // Año dinámico
+    document.getElementById("yearSpan").textContent = new Date().getFullYear();
+
+    // Navbar: cambio al hacer scroll
+    const nav = document.querySelector(".nav");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 40) {
+        nav.classList.add("nav--scrolled");
+      } else {
+        nav.classList.remove("nav--scrolled");
+      }
+    });
+
+    // Menú móvil
+    const navToggle = document.getElementById("navToggle");
+    const navLinks = document.getElementById("navLinks");
+    navToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("nav-links--open");
+    });
+
+    // Cerrar menú al hacer clic en un enlace
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("nav-links--open");
+      });
+    });
+
+    // Scroll suave
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener("click", function (e) {
+        const targetId = this.getAttribute("href").slice(1);
+        const targetEl = document.getElementById(targetId);
+        if (!targetEl) return;
+        e.preventDefault();
+        const offset = nav.offsetHeight + 12;
+        const elementTop = targetEl.getBoundingClientRect().top + window.pageYOffset;
+        const top = elementTop - offset;
+        window.scrollTo({ top, behavior: "smooth" });
+      });
+    });
+
+    // Enlaces activos al hacer scroll
+    const sections = document.querySelectorAll("section[id]");
+    const navItems = document.querySelectorAll(".nav-link");
+    const setActiveLink = () => {
+      let currentId = null;
+      const scrollPos = window.scrollY + nav.offsetHeight + 80;
+      sections.forEach((sec) => {
+        if (scrollPos >= sec.offsetTop && scrollPos < sec.offsetTop + sec.offsetHeight) {
+          currentId = sec.id;
+        }
+      });
+      navItems.forEach((link) => {
+        link.classList.toggle("nav-link--active", link.getAttribute("href") === "#" + currentId);
+      });
+    };
+    window.addEventListener("scroll", setActiveLink);
+    window.addEventListener("load", setActiveLink);
+
+    // Animaciones de aparición
+    const revealEls = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.18 }
+    );
+    revealEls.forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
